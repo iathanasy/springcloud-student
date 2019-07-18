@@ -1,0 +1,9 @@
+server:
+  port: 8988
+spring:
+  application:
+    name: service-hello
+  zipkin:
+    base-url: http://127.0.0.1:9411 # https://dl.bintray.com/openzipkin/maven/io/zipkin/java/zipkin-server/ 下载启动：java -jar zipkin-server-2.10.1-exec.jar
+
+
