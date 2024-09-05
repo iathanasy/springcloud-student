@@ -20,16 +20,15 @@ spring:
 service-url:
   nacos-service-user: http://nacos-service-user
 feign:
-#  okhttp:
-#    enabled: true
+  okhttp: # 启用okhttp
+    enabled: true
+  httpclient:
+    enabled: false
   client:
     config:
       default: # Feign调用超时配置
         connectTimeout: 5000
         readTimeout: 5000
-#ribbon:
-#  okhttp:
-#    enabled: true
 rest:
   template:
     config: # RestTemplate调用超时配置
@@ -37,4 +36,4 @@ rest:
       readTimeout: 15000
 logging:
   level:
-    root: debug
+    root: info
