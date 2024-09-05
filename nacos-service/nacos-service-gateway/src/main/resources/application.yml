@@ -1,0 +1,28 @@
+server:
+  port: 9100
+spring:
+  application:
+    name: nacos-service-gateway
+  cloud:
+    nacos:
+      discovery:
+        server-addr: localhost:8848 #配置Nacos地址
+    gateway:
+      routes:
+        - id: nacos-service-user
+          uri: lb://nacos-service-user
+          predicates:
+            - Path=/user/**
+        - id: nacos-service-ribbon
+          uri: lb://nacos-service-ribbon
+          predicates:
+            - Path=/ribbon/**
+          filters:
+            - StripPrefix=1
+        - id: nacos-service-feign
+          uri: lb://nacos-service-feign
+          predicates:
+            - Path=/feign/**
+          filters:
+#            - PrefixPath=/feign # 所有的请求都加上前缀 访问/user/1 请求会被发送到 http://127.0.0.1:9100/feign/user/1
+            - StripPrefix=1 # 去掉前缀 访问/feign/user/1 请求会被发送到 http://127.0.0.1:9100/user/1   1. 如果配置了 PrefixPath=/xxx 、StripPrefix=1 则会去掉/feign ,加上/xxx。 访问/feign/user/1 请求会被发送到 http://127.0.0.1:9100/xxx/user/1
