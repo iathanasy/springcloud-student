@@ -23,8 +23,9 @@
         <module>service-ribbon</module><!--服务消费者 rest+ ribbon-->
         <module>service-feign</module><!--服务消费者 feign-->
         <module>service-zuul</module><!--服务网关-->
-        <module>server-zipkin</module>
-        <module>service-common</module><!--链路追踪-->
+        <module>server-zipkin</module> <!--链路追踪-->
+        <module>service-common</module>
+        <module>nacos-service</module>
     </modules>
 
     <properties>
